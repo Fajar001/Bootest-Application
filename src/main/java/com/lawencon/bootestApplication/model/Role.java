@@ -8,8 +8,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import com.lawencon.bootestApplication.dao.ERole;
-
 @Entity
 @Table(name = "role")
 public class Role {

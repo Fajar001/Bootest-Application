@@ -19,6 +19,8 @@ public class Reviewers {
 	private String username;
 	private String email;
 	private String password;
+	
+	public Reviewers() {}
 
 	public String getIdReviewers() {
 		return idReviewers;
@@ -49,6 +51,13 @@ public class Reviewers {
 	}
 
 	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public Reviewers(String username, String email, String password) {
+		super();
+		this.username = username;
+		this.email = email;
 		this.password = password;
 	}
 }

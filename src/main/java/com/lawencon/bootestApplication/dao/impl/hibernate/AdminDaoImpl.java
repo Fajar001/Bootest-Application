@@ -33,16 +33,16 @@ public class AdminDaoImpl extends BaseHibernate implements AdminDao {
 			q = query("from Admin where username = :userParam").setParameter("userParam", username);
 			return (Admin) q.getSingleResult();
 		} catch (NoResultException e) {
-			e.printStackTrace();
+			e.getMessage();
 		}
-		return null;
+		return new Admin();
 	}
 
 	@Override
 	public Admin update(Admin user) throws Exception {
-		Admin upsert = findByUsernameAdmin(user.getUsername());
+		Admin upsert = findByIdAdmin(user.getIdAdmin());
 		if(upsert == null) {
-			throw new Exception("Invalid Data Change");
+			throw new NoResultException();
 		}
 		else {
 			upsert.setUsername(user.getUsername());
@@ -54,9 +54,15 @@ public class AdminDaoImpl extends BaseHibernate implements AdminDao {
 	}
 
 	@Override
-	public Admin checkDataValid(Admin check) throws Exception {
+	public void delete(String id) throws Exception {
+		em.remove(findByIdAdmin(id));
+	}
+
+	@Override
+	public Admin checkDataExists(Admin check) throws Exception {
 		try {
-			q = query("from Admin where username not in (username) or email not in (email)");
+			q = query("from Admin where username = :userParam and email = :emailParam")
+					.setParameter("userParam", check.getUsername()).setParameter("emailParam", check.getEmail());
 			return (Admin) q.getSingleResult();
 		} catch (NoResultException e) {
 			// TODO: handle exception
@@ -65,15 +71,9 @@ public class AdminDaoImpl extends BaseHibernate implements AdminDao {
 	}
 
 	@Override
-	public void delete(String username) throws Exception {
-		em.remove(findByUsernameAdmin(username));
-	}
-
-	@Override
-	public Admin checkDataExists(Admin check) throws Exception {
+	public Admin findByIdAdmin(String id) throws Exception {
 		try {
-			q = query("from Admin where username = :userParam and email = :emailParam")
-					.setParameter("userParam", check.getUsername()).setParameter("emailParam", check.getEmail());
+			q = query("from Admin where idAdmin = :idParam").setParameter("idParam", id);
 			return (Admin) q.getSingleResult();
 		} catch (NoResultException e) {
 			// TODO: handle exception

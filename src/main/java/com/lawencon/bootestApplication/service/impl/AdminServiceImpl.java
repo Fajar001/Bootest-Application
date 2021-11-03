@@ -38,18 +38,15 @@ public class AdminServiceImpl implements AdminService {
 
 	@Override
 	public Admin update(Admin user) throws Exception {
-//		if(checkDataValid(user)==true) {
-//			System.out.println("Invalid Data Change");
-//		}
 		return dao.update(user);
 	}
 
 	@Override
-	public String delete(String username) throws Exception {
-		if(findByUsernameAdmin(username)==null) {
+	public String delete(String id) throws Exception {
+		if(findByIdAdmin(id)==null) {
 			return "No data found";
 		}
-		dao.delete(username);
+		dao.delete(id);
 		return "Deleted...";
 	}
 
@@ -66,19 +63,10 @@ public class AdminServiceImpl implements AdminService {
 		}
 		return false;
 	}
-	
-//	@Override
-//	public boolean checkDataValid(Admin check) throws Exception {
-//		Admin c = null;
-//		try {
-//			c = (Admin) dao.checkDataValid(check);
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//		if (c == null) {
-//			return true;
-//		}
-//		return false;
-//	}
 
+	@Override
+	public Admin findByIdAdmin(String id) throws Exception {
+		return dao.findByIdAdmin(id);
+	}
+	
 }

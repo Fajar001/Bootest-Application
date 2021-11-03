@@ -71,7 +71,7 @@ public class AdminController{
 	}
 	
 	@GetMapping("/search/{userAdmin}")
-	public ResponseEntity<?> getId(@PathVariable("userAdmin") String userAdmin){
+	public ResponseEntity<?> getUsername(@PathVariable("userAdmin") String userAdmin){
 		try {
 			return new ResponseEntity<>(as.findByUsernameAdmin(userAdmin), HttpStatus.OK);
 		} catch (Exception e) {

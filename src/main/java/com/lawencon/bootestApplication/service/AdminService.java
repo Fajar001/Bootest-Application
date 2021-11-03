@@ -9,8 +9,8 @@ public interface AdminService {
 	String createAdmin(Admin insert) throws Exception;
 	List<?> findAll() throws Exception;
 	Admin findByUsernameAdmin(String username) throws Exception;
+	Admin findByIdAdmin(String id) throws Exception;
 	Admin update(Admin user) throws Exception;
-	String delete(String username) throws Exception;
+	String delete(String id) throws Exception;
 	boolean checkDataExists(Admin check)throws Exception;
-//	boolean checkDataValid(Admin check)throws Exception;
 }

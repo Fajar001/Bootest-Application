@@ -19,6 +19,8 @@ public class Candidate {
 	private String username;
 	private String email;
 	private String password;
+	
+	public Candidate() {}
 
 	public String getIdCandidate() {
 		return idCandidate;
@@ -49,6 +51,13 @@ public class Candidate {
 	}
 
 	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public Candidate(String username, String email, String password) {
+		super();
+		this.username = username;
+		this.email = email;
 		this.password = password;
 	}
 }

@@ -1,4 +1,4 @@
-package com.lawencon.bootestApplication.dao;
+package com.lawencon.bootestApplication.model;
 
 public enum ERole {
 

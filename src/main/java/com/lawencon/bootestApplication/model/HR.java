@@ -51,4 +51,13 @@ public class HR {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
+	public HR() {}
+
+	public HR(String username, String email, String password) {
+		super();
+		this.username = username;
+		this.email = email;
+		this.password = password;
+	}
 }
