@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.lawencon.bootestApplication.dao.AdminDao;
+import com.lawencon.bootestApplication.dao.HrDao;
 import com.lawencon.bootestApplication.dao.ReviewersDao;
 import com.lawencon.bootestApplication.model.Reviewers;
 import com.lawencon.bootestApplication.service.ReviewersService;
@@ -16,6 +18,10 @@ public class ReviewersServiceImpl implements ReviewersService{
 
 	@Autowired
 	private ReviewersDao dao;
+	@Autowired
+	private AdminDao daoAdmin;
+	@Autowired
+	private HrDao daoHR;
 
 	@Override
 	public String createReviewers(Reviewers insert) throws Exception {
@@ -23,7 +29,7 @@ public class ReviewersServiceImpl implements ReviewersService{
 			return "Data Already Exists";
 		}
 		dao.createReviewers(insert);
-		return "Success insert user admin";
+		return "Success insert user Reviewers";
 	}
 
 	@Override

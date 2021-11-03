@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.lawencon.bootestApplication.dao.AdminDao;
 import com.lawencon.bootestApplication.dao.HrDao;
+import com.lawencon.bootestApplication.dao.ReviewersDao;
 import com.lawencon.bootestApplication.model.HR;
 import com.lawencon.bootestApplication.service.HRService;
 
@@ -16,6 +18,10 @@ public class HRServiceImpl implements HRService{
 
 	@Autowired
 	private HrDao dao;
+	@Autowired
+	private AdminDao daoAdmin;
+	@Autowired
+	private ReviewersDao daoReviewers;
 	
 	@Override
 	public String createHR(HR insert) throws Exception {
